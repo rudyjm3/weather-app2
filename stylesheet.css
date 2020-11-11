@@ -62,6 +62,9 @@ main {
   color: #fff;
   font-size: 16px;
 }
+/*.location .date .current-time {
+  margin-left: 10px;
+}*/
 .current .weather {
   margin-top: 25px;
 }

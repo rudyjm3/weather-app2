@@ -27,8 +27,22 @@ function displayResults (weather) {
   city.innerText = `${weather.name}, ${weather.sys.country}`;
 
   let now = new Date();
+  let hr = now.getHours();
+  let min = now.getMinutes();
+  if (min < 10) {
+    min = "0" + min;
+  }
+  let ampm = "am";
+  if (hr > 12) {
+    hr -= 12;
+    ampm = "pm";
+  }
+
   let date = document.querySelector('.location .date');
-  date.innerText = dateBuilder(now);
+  date.innerHTML = dateBuilder(now) + " <br> Current Time: " + hr + ":" + min + ampm;
+  //date.innerHTML = `${dateBuilder(now)}<span class="current-time"> //current time</span>`;
+  //let time = document.querySelector('.location .date .current-time');
+  //time.innerText = now.getHours() + ":" + now.getMinutes();
 
   let locationIcon = document.querySelector('.current .weather-icon');
   //const {icon} = weather.weather[0].icon;
