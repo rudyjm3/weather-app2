@@ -21,6 +21,7 @@ function getResults (query) {
     }).then(displayResults);
 }
 
+
 function displayResults (weather) {
   console.log(weather);
   let city = document.querySelector('.location .city');
@@ -38,6 +39,15 @@ function displayResults (weather) {
     ampm = "pm";
   }
 
+  function degToCompass(num) {
+      var deg = `${weather.wind.deg}`;
+      var val = Math.floor((deg / 22.5) + 0.5);
+      var arr = ['↑ N', '↗ NE', '→ E', '↘ SE', '↓ S', '↙ SW', '← W', '↖ NW'];
+      return arr[(val % 8)];
+      console.log(num);
+  }
+
+
   let date = document.querySelector('.location .date');
   date.innerHTML = dateBuilder(now) + " <br> Current Time: " + hr + ":" + min + ampm;
   //date.innerHTML = `${dateBuilder(now)}<span class="current-time"> //current time</span>`;
@@ -49,20 +59,28 @@ function displayResults (weather) {
   locationIcon.innerHTML = `<img src="icons/${weather.weather[0].icon}.png"/>`;
 // CURRENT temperature
   let temp = document.querySelector('.current .temp');
-  temp.innerHTML = `${Math.round(weather.main.temp)}<span>°F</span>`;
+  temp.innerHTML = `${Math.round(weather.main.temp)}<span class="deg-symbol-main">°F</span>`;
 // SHORT DESCRITOPN OF WEATHER
   let weather_el = document.querySelector('.current .weather');
-  weather_el.innerHTML = `${weather.weather[0].main} <span>: </span><span class="descript"></span>`;
+  weather_el.innerHTML = `${weather.weather[0].main}<span>: </span><span class="descript"></span>`;
 // LOND DESCRIPTION OF THE WEATHER
   let weather_desc = document.querySelector('.current .weather .descript');
   weather_desc.innerHTML = weather.weather[0].description;
 // FEELS LIKE temperature
   let feellike = document.querySelector('.feels_like_temp');
-  feellike.innerText = `Feels Like ${Math.round(weather.main.feels_like)}°F`;
+  feellike.innerHTML = `Feels Like ${Math.round(weather.main.feels_like)}<span class="deg-symbol-sm"> °F</span>`;
 // CURRENT HI / LOW TEMPERATURE
   let hilow = document.querySelector('.hi-low');
-  hilow.innerText = `Min ${Math.round(weather.main.temp)}°F / High ${Math.round(weather.main.temp_max)}°F`;
+  hilow.innerHTML = `Min ${Math.round(weather.main.temp)}<span class="deg-symbol-sm"> °F</span> / High ${Math.round(weather.main.temp_max)}<span class="deg-symbol-sm"> °F</span>`;
+
+  let wind = document.querySelector('.wind-speed');
+  wind.innerText = `Wind speed: ${weather.wind.speed} mph  `;
+
+  let wd = document.querySelector('.current .wind-dir');
+  wd.innerHTML = degToCompass();
+
 }
+
 
 function dateBuilder (d) {
   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -75,3 +93,16 @@ function dateBuilder (d) {
 
   return `${day} ${date} ${month} ${year}`;
 }
+
+//function getCardinalDirection (angle) {
+    //const directions = ['↑ N', '↗ NE', '→ E', '↘ SE', '↓ S', '↙ SW', '← W', '↖ NW'];
+    //return directions[Math.round(weather.wind.deg / 45) % 8];
+//}
+
+//function degToCompass(num) {
+    //var deg = displayResults();
+    //var val = Math.floor((deg / 22.5) + 0.5);
+    //var arr = ['↑ N', '↗ NE', '→ E', '↘ SE', '↓ S', '↙ SW', '← W', '↖ NW'];
+    //return arr[(val % 8)];
+    //console.log(deg);
+//}

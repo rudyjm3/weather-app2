@@ -88,6 +88,20 @@ main {
 .current .temp span {
   font-weight: 500;
 }
+.deg-symbol-main {
+  font-size: 30px;
+  font-weight: 600;
+  text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
+  position: relative;
+  top: -50px;
+}
+.deg-symbol-sm {
+  font-size: 15px;
+  font-weight: 500;
+  text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
+  position: relative;
+  top: -8px;
+}
 .current .feels_like_temp {
   color: #fff;
   font-size: 24px;
@@ -104,13 +118,20 @@ main {
 }
 .current .weather .descript {
   color: #fff;
-  font-size: 22px;
+  font-size: 30px;
   font-weight: 500;
   font-style: italic;
   margin-bottom: 15px;
   text-shadow: 0px 3px rgba(0, 0, 0, 0.4);
+  text-transform: capitalize;
 }
 .current .hi-low {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+  text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
+}
+.wind-info {
   color: #fff;
   font-size: 24px;
   font-weight: 500;
