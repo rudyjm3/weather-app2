@@ -54,12 +54,13 @@ function displayResults (weather) {
   //let time = document.querySelector('.location .date .current-time');
   //time.innerText = now.getHours() + ":" + now.getMinutes();
 
-  let locationIcon = document.querySelector('.current .weather-icon');
-  //const {icon} = weather.weather[0].icon;
-  locationIcon.innerHTML = `<img src="icons/${weather.weather[0].icon}.png"/>`;
-// CURRENT temperature
+// REMOVED BELOW 2 LINES BECAUSE ICON SPAN ADDED NEXT TO THE CURRENT TEMP IN 1 VAR.
+  //let locationIcon = document.querySelector('.current .weather-icon');
+  //locationIcon.innerHTML = `<img src="icons/${weather.weather[0].icon}.png"/>`;
+
+// CURRENT temperature and related icon
   let temp = document.querySelector('.current .temp');
-  temp.innerHTML = `${Math.round(weather.main.temp)}<span class="deg-symbol-main">°F</span>`;
+  temp.innerHTML = `<span class="weather-icon"><img src="icons/${weather.weather[0].icon}.png"/></span>${Math.round(weather.main.temp)}<span class="deg-symbol-main">°F</span>`;
 // SHORT DESCRITOPN OF WEATHER
   let weather_el = document.querySelector('.current .weather');
   weather_el.innerHTML = `${weather.weather[0].main}<span>: </span><span class="descript"></span>`;
@@ -74,7 +75,7 @@ function displayResults (weather) {
   hilow.innerHTML = `Min ${Math.round(weather.main.temp)}<span class="deg-symbol-sm"> °F</span> / High ${Math.round(weather.main.temp_max)}<span class="deg-symbol-sm"> °F</span>`;
 
   let wind = document.querySelector('.wind-speed');
-  wind.innerText = `Wind speed: ${weather.wind.speed} mph  `;
+  wind.innerText = `Wind speed: ${Math.round(weather.wind.speed)} mph  `;
 
   let wd = document.querySelector('.current .wind-dir');
   wd.innerHTML = degToCompass();
