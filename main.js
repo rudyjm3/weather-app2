@@ -60,7 +60,7 @@ function displayResults (weather) {
 
 // CURRENT temperature and related icon
   let temp = document.querySelector('.current .temp');
-  temp.innerHTML = `<span class="weather-icon"><img src="icons/${weather.weather[0].icon}.png"/></span>${Math.round(weather.main.temp)}<span class="deg-symbol-main">°F</span>`;
+  temp.innerHTML = `<span class="weather-icon"><img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png"/></span>${Math.round(weather.main.temp)}<span class="deg-symbol-main">°F</span>`;
 // SHORT DESCRITOPN OF WEATHER
   let weather_el = document.querySelector('.current .weather');
   weather_el.innerHTML = `${weather.weather[0].main}<span>: </span><span class="descript"></span>`;
