@@ -13,6 +13,8 @@ Converting wind direction degree to text.
 https://stackoverflow.com/questions/7490660/converting-wind-direction-in-angles-to-text-words/25867068#25867068
 CTRL + F "This JavaScript will work for anyone who only needs 8 cardinal directions and would like corresponding arrows." for answer I used.
 
+Look into:
+https://www.campbellsci.com/blog/convert-wind-directions
 
 Display current time and date with javascript.
 https://www.google.com/search?q=current+time+javascript&rlz=1C1CHBF_enUS746US746&oq=current+time+javascript&aqs=chrome..69i57j0l2j0i10i22i30j0i22i30l4.11172j0j7&sourceid=chrome&ie=UTF-8

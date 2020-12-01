@@ -16,6 +16,7 @@ function setQuery(evt) {
 
 function getResults (query) {
   fetch(`${api.base}weather?q=${query}&units=${api.units}&appid=${api.key}`)
+  //fetch(`${api.base}weather?q=${query}zip=${query}&units=${api.units}&appid=${api.key}`)
     .then(weather => {
       return weather.json();
     }).then(displayResults);
@@ -41,10 +42,11 @@ function displayResults (weather) {
 
   function degToCompass(num) {
       var deg = `${weather.wind.deg}`;
+//Tip: If you would like to use eight sectors instead of 16, with a shorter lookup table, divide by 45 degrees instead of 22.5 degrees.
       var val = Math.floor((deg / 22.5) + 0.5);
+// ONLY 8 COMPASS POINTS BEING USED
       var arr = ['↑ N', '↗ NE', '→ E', '↘ SE', '↓ S', '↙ SW', '← W', '↖ NW'];
       return arr[(val % 8)];
-      console.log(num);
   }
 
 
@@ -69,13 +71,13 @@ function displayResults (weather) {
   weather_desc.innerHTML = weather.weather[0].description;
 // FEELS LIKE temperature
   let feellike = document.querySelector('.feels_like_temp');
-  feellike.innerHTML = `Feels Like ${Math.round(weather.main.feels_like)}<span class="deg-symbol-sm"> °F</span>`;
+  feellike.innerHTML = `<span class="temp-icon"><i class="fas fa-thermometer-half"></i></span> Feels Like ${Math.round(weather.main.feels_like)}<span class="deg-symbol-sm"> °F</span>`;
 // CURRENT HI / LOW TEMPERATURE
   let hilow = document.querySelector('.hi-low');
-  hilow.innerHTML = `Min ${Math.round(weather.main.temp)}<span class="deg-symbol-sm"> °F</span> / High ${Math.round(weather.main.temp_max)}<span class="deg-symbol-sm"> °F</span>`;
+  hilow.innerHTML = `Low ${Math.round(weather.main.temp_min)}<span class="deg-symbol-sm"> °F</span> / High ${Math.round(weather.main.temp_max)}<span class="deg-symbol-sm"> °F</span>`;
 
   let wind = document.querySelector('.wind-speed');
-  wind.innerText = `Wind speed: ${Math.round(weather.wind.speed)} mph  `;
+  wind.innerHTML = `<span class="wind-icon"><i class="fas fa-wind"></i></span> Wind ${Math.round(weather.wind.speed)} mph  `;
 
   let wd = document.querySelector('.current .wind-dir');
   wd.innerHTML = degToCompass();
